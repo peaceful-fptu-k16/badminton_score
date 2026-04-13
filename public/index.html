@@ -235,7 +235,7 @@
 
         <section class="panel p-6 fade-up">
             <div class="flex flex-col md:flex-row justify-between items-center gap-3 mb-5">
-                <h2 class="text-2xl font-extrabold uppercase tracking-wide">Lịch Thi Đấu Vòng Tròn Chuyên Nghiệp</h2>
+                <h2 class="text-2xl font-extrabold uppercase tracking-wide">Lịch Thi Đấu Vòng Tròn</h2>
                 <div class="flex gap-2">
                     <button id="reset-btn" class="px-4 py-2 rounded-lg border border-red-300/40 text-red-200 hover:bg-red-500/15 text-sm font-bold">Reset Dữ Liệu</button>
                     <button onclick="window.print()" class="px-4 py-2 rounded-lg bg-lime-400 text-slate-900 hover:bg-lime-300 text-sm font-extrabold">In / Xuất PDF</button>
@@ -591,6 +591,8 @@
         function initAuthAndSync() {
             updateSyncStatus("Đang đăng nhập...", "font-bold text-yellow-300");
 
+            renderAll();
+
             onAuthStateChanged(auth, (user) => {
                 if (user) startRealtimeSync();
             });
@@ -598,6 +600,7 @@
             signInAnonymously(auth).catch((error) => {
                 console.error("Lỗi đăng nhập ẩn danh:", error);
                 updateSyncStatus("Lỗi đăng nhập", "font-bold text-red-300");
+                renderAll();
             });
         }
 
