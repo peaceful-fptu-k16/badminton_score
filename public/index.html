@@ -139,14 +139,6 @@
                     <p class="text-cyan-100/70 uppercase text-[11px] font-bold">Mùa giải</p>
                     <p class="font-extrabold text-2xl text-lime-300">Season 2026</p>
                 </div>
-                <div class="panel p-4">
-                    <p class="text-cyan-100/70 uppercase text-[11px] font-bold">Dự án</p>
-                    <p id="project-id" class="font-bold text-cyan-200">---</p>
-                </div>
-                <div class="panel p-4">
-                    <p class="text-cyan-100/70 uppercase text-[11px] font-bold">Đồng bộ</p>
-                    <p id="sync-status" class="font-bold text-yellow-300">Đang chờ...</p>
-                </div>
             </div>
         </div>
     </header>
@@ -509,6 +501,14 @@
             const sf2TeamsEl = document.getElementById("sf2-teams");
             const finalTeamsEl = document.getElementById("final-teams");
             const winnerEl = document.getElementById("final-winner");
+
+            if (completedMatches === 0) {
+                sf1TeamsEl.innerText = "Chưa xác định";
+                sf2TeamsEl.innerText = "Chưa xác định";
+                finalTeamsEl.innerText = "Thắng BK1 vs Thắng BK2";
+                winnerEl.innerText = "Chưa xác định";
+                return;
+            }
 
             if (top4.length < 4) {
                 sf1TeamsEl.innerText = "Chờ dữ liệu top 4";
