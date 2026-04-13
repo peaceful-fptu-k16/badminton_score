@@ -1,0 +1,28 @@
+{
+  "rules": {
+    "badminton": {
+      "tournament_state": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "scores": {
+          "$matchId": {
+            "a": {
+              ".validate": "newData.isNumber() || newData.val() === ''"
+            },
+            "b": {
+              ".validate": "newData.isNumber() || newData.val() === ''"
+            }
+          }
+        },
+        "playoffs": {
+          "sf1_a": {
+            ".validate": "newData.isNumber() || newData.val() === ''"
+          },
+          "sf1_b": {
+            ".validate": "newData.isNumber() || newData.val() === ''"
+          }
+        }
+      }
+    }
+  }
+}
