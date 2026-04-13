@@ -287,8 +287,11 @@
 
         let syncStarted = false;
 
-        document.getElementById("project-id").innerText = firebaseConfig.projectId;
-        document.getElementById("stat-total").innerText = String(SCHEDULE.length * 3);
+        const projectIdEl = document.getElementById("project-id");
+        if (projectIdEl) projectIdEl.innerText = firebaseConfig.projectId;
+
+        const statTotalEl = document.getElementById("stat-total");
+        if (statTotalEl) statTotalEl.innerText = String(SCHEDULE.length * 3);
 
         isSupported().then((supported) => {
             if (supported) getAnalytics(app);
